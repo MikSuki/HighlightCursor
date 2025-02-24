@@ -26,6 +26,13 @@
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
         <editorFactoryListener implementation="com.miksuki.highlightcursor.Editor"/>
+        <applicationConfigurable
+                parentId="tools"
+                instance="com.miksuki.highlightcursor.AppSettingsConfigurable"
+                id="com.miksuki.highlightcursor.AppSettingsConfigurable"
+                displayName="Highlight Cursor"
+        />
+        <applicationService serviceImplementation="com.miksuki.highlightcursor.AppSettings"/>
 
     </extensions>
 </idea-plugin>
