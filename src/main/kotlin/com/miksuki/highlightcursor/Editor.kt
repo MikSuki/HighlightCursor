@@ -9,6 +9,6 @@ class Editor : EditorFactoryListener {
     override fun editorCreated(event: EditorFactoryEvent) {
         super.editorCreated(event)
         val editor = event.editor
-        editor.colorsScheme.setColor(CARET_COLOR, Color.decode(AppSettings.state.color))
+        editor.colorsScheme.setColor(CARET_COLOR, Color.decode(AppSettings.getInstance().state?.color))
     }
 }

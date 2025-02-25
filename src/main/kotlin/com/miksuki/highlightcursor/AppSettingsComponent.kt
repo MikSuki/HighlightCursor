@@ -17,7 +17,7 @@ object AppSettingsComponent {
         ColorPanel().apply {
             preferredSize = Dimension(100, 20)
             maximumSize = Dimension(80, 20)
-            selectedColor = Color.decode(AppSettings.state.color)
+            selectedColor = Color.decode(AppSettings.getInstance().state?.color)
         }
 
     val myMainPanel: JPanel =

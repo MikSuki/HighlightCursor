@@ -1,5 +1,6 @@
 package com.miksuki.highlightcursor
 
+import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
@@ -10,27 +11,33 @@ import org.jetbrains.annotations.NotNull
     name = "com.miksuki.highlightCursor.AppSettings",
     storages = [Storage("HighLightCursorPlugin.xml")],
 )
-object AppSettings : PersistentStateComponent<AppSettings.State> {
-    class State {
-        @JvmField
-        @NonNls
-        var userId = "John Smith"
+class AppSettings : PersistentStateComponent<MyState> {
+    private var myState = MyState()
 
-        @JvmField
-        @NonNls
-        var color = "#FF0000"
-
-        @JvmField
-        var ideaStatus = false
-    }
-
-    var myState = State()
-
-    override fun getState(): State = myState
+    override fun getState(): MyState = myState
 
     override fun loadState(
-        @NotNull newState: State,
+        @NotNull newState: MyState,
     ) {
         myState = newState
     }
+
+    companion object {
+        @JvmStatic
+        fun getInstance(): PersistentStateComponent<MyState> =
+            ApplicationManager
+                .getApplication()
+                .getService(AppSettings::class.java)
+    }
 }
+
+data class MyState(
+    @JvmField
+    @NonNls
+    var userId: String = "John Smith",
+    @JvmField
+    @NonNls
+    var color: String = "#FF0000",
+    @JvmField
+    var ideaStatus: Boolean = false,
+)
