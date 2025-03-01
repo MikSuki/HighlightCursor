@@ -7,6 +7,6 @@ import com.intellij.openapi.startup.ProjectActivity
 class Startup : ProjectActivity {
     override suspend fun execute(project: Project) {
         // can change to VimListenersNotifier, when it is stable
-        IdeEventQueue.getInstance().addPostEventListener(EventHandler()::onPost, project)
+        IdeEventQueue.getInstance().addPostprocessor(EventHandler(), project)
     }
 }
