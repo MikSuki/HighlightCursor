@@ -37,7 +37,7 @@ data class MyState(
     var userId: String = "John Smith",
     @JvmField
     @NonNls
-    var color: String = "#FF0000",
+    var colorHex: String = "#FF0000",
     @JvmField
     var ideaStatus: Boolean = false,
 )

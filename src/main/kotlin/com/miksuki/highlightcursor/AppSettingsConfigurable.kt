@@ -13,14 +13,14 @@ class AppSettingsConfigurable : Configurable {
         val state = AppSettings.getInstance().state
         return AppSettingsComponent.getUserNameText() != state?.userId ||
             AppSettingsComponent.getIdeaUserStatus() != state?.ideaStatus ||
-            AppSettingsComponent.getColor() != state?.color
+            AppSettingsComponent.getColor() != state?.colorHex
     }
 
     override fun apply() {
         val state = AppSettings.getInstance().state
         val color = AppSettingsComponent.getColor()
         state?.userId = AppSettingsComponent.getUserNameText()
-        state?.color = color
+        state?.colorHex = color
         state?.ideaStatus = AppSettingsComponent.getIdeaUserStatus()
 
         EditorFactory.getInstance().allEditors.map { editor ->
