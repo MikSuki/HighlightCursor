@@ -9,7 +9,7 @@ class Editor : EditorFactoryListener {
         val editor = event.editor
         val color = AppSettings.getInstance().state?.colorHex
         color?.let {
-            ColorService.changeCursorColor(editor, it)
+            ColorService.changeCursorColor(listOf(editor), it)
         }
     }
 }

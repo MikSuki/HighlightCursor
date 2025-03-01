@@ -6,9 +6,11 @@ import java.awt.Color
 
 object ColorService {
     fun changeCursorColor(
-        editor: Editor,
+        editors: List<Editor>,
         colorHex: String,
     ) {
-        editor.colorsScheme.setColor(CARET_COLOR, Color.decode(colorHex))
+        editors.map {
+            it.colorsScheme.setColor(CARET_COLOR, Color.decode(colorHex))
+        }
     }
 }

@@ -1,9 +1,7 @@
 package com.miksuki.highlightcursor
 
 import com.intellij.openapi.editor.EditorFactory
-import com.intellij.openapi.editor.colors.EditorColors.CARET_COLOR
 import com.intellij.openapi.options.Configurable
-import java.awt.Color
 import javax.swing.JComponent
 
 class AppSettingsConfigurable : Configurable {
@@ -23,8 +21,9 @@ class AppSettingsConfigurable : Configurable {
         state?.colorHex = color
         state?.ideaStatus = AppSettingsComponent.getIdeaUserStatus()
 
-        EditorFactory.getInstance().allEditors.map { editor ->
-            editor.colorsScheme.setColor(CARET_COLOR, Color.decode(color))
+        val editors = EditorFactory.getInstance().allEditors
+        color.let {
+            ColorService.changeCursorColor(editors.toList(), it)
         }
     }
 
