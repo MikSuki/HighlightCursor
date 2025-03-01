@@ -22,9 +22,7 @@ class AppSettingsConfigurable : Configurable {
         state?.ideaStatus = AppSettingsComponent.getIdeaUserStatus()
 
         val editors = EditorFactory.getInstance().allEditors
-        color.let {
-            ColorService.changeCursorColor(editors.toList(), it)
-        }
+        ColorService.changeCursorColor(editors.toList())
     }
 
     override fun getDisplayName(): String = "Setting Highlight Cursor"

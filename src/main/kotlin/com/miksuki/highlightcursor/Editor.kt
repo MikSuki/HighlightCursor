@@ -7,9 +7,6 @@ class Editor : EditorFactoryListener {
     override fun editorCreated(event: EditorFactoryEvent) {
         super.editorCreated(event)
         val editor = event.editor
-        val color = AppSettings.getInstance().state?.colorHex
-        color?.let {
-            ColorService.changeCursorColor(listOf(editor), it)
-        }
+        ColorService.changeCursorColor(listOf(editor))
     }
 }
