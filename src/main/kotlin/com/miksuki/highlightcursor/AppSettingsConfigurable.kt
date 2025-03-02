@@ -11,14 +11,20 @@ class AppSettingsConfigurable : Configurable {
         val state = AppSettings.getInstance().state
         return AppSettingsComponent.getUserNameText() != state?.userId ||
             AppSettingsComponent.getIdeaUserStatus() != state?.ideaStatus ||
-            AppSettingsComponent.getColor() != state?.colorHex
+            AppSettingsComponent.getColor() != state?.colorHex ||
+            AppSettingsComponent.getVimInsertColor() != state?.vimInsertColorHex ||
+            AppSettingsComponent.getVimOtherColor() != state?.vimOtherColorHex
     }
 
     override fun apply() {
         val state = AppSettings.getInstance().state
         val color = AppSettingsComponent.getColor()
+        val vimInsertcolor = AppSettingsComponent.getVimInsertColor()
+        val vimOthercolor = AppSettingsComponent.getVimOtherColor()
         state?.userId = AppSettingsComponent.getUserNameText()
         state?.colorHex = color
+        state?.vimInsertColorHex = vimInsertcolor
+        state?.vimOtherColorHex = vimOthercolor
         state?.ideaStatus = AppSettingsComponent.getIdeaUserStatus()
 
         val editors = EditorFactory.getInstance().allEditors

@@ -13,7 +13,21 @@ object ColorService {
     }
 
     private fun getSettingColor(): Color? {
-        val colorHex = AppSettings.getInstance().state?.colorHex
+        val state = AppSettings.getInstance().state
+
+        println("insert color: ${state?.vimInsertColorHex}")
+        println("other color: ${state?.vimOtherColorHex}")
+        val colorHex =
+            when (true) {
+                VimUtil.isInVimEditor() ->
+                    if (VimUtil.isInsertMode()) {
+                        state?.vimInsertColorHex
+                    } else {
+                        state?.vimOtherColorHex
+                    }
+
+                else -> state?.colorHex
+            }
         colorHex?.let {
             return Color.decode(it)
         } ?: throw Exception("color not found :(")

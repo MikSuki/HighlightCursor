@@ -32,12 +32,14 @@ class AppSettings : PersistentStateComponent<MyState> {
 }
 
 data class MyState(
-    @JvmField
     @NonNls
     var userId: String = "John Smith",
-    @JvmField
     @NonNls
     var colorHex: String = "#FF0000",
-    @JvmField
+    @NonNls
+    var vimInsertColorHex: String = "#FF0000",
+    @NonNls
+    var vimOtherColorHex: String = "#FF0000",
+    @NonNls
     var ideaStatus: Boolean = false,
 )
