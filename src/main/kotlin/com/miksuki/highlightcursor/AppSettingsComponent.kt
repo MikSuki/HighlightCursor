@@ -8,7 +8,10 @@ import java.awt.Color
 import javax.swing.JPanel
 
 object AppSettingsComponent {
-    private val myUserStatus = JBCheckBox()
+    private val vimCustomize =
+        JBCheckBox().apply {
+            isSelected = AppSettings.getInstance().state?.vimCustomize ?: false
+        }
     private var colorPanel =
         ColorPanel().apply {
             selectedColor = Color.decode(AppSettings.getInstance().state?.colorHex)
@@ -26,14 +29,21 @@ object AppSettingsComponent {
     val myMainPanel: JPanel =
         FormBuilder
             .createFormBuilder()
-            .addComponent(myUserStatus, 1)
-            .addLabeledComponent(JBLabel("Choose color: "), colorPanel, 1, false)
-            .addLabeledComponent(JBLabel("Choose vim insert color: "), vimInsertColorPanel, 1, false)
-            .addLabeledComponent(JBLabel("Choose vim other color: "), vimOtherColorPanel, 1, false)
+            .addLabeledComponent(JBLabel("Choose your color: "), colorPanel, 1, false)
+            .addVerticalGap(15)
+            .addSeparator(5)
+            .addVerticalGap(15)
+            .addComponent(JBLabel("----- If vim is not installed, the following setting will not work -----"))
+            .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Enable vim customize settings"), vimCustomize, 1, false)
+            .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Color for insert mode: "), vimInsertColorPanel, 1, false)
+            .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Color for other mode(normal, view, ...): "), vimOtherColorPanel, 1, false)
             .addComponentFillVertically(JPanel(), 0)
             .panel
 
-    fun getIdeaUserStatus(): Boolean = myUserStatus.isSelected()
+    fun getVimCustomize(): Boolean = vimCustomize.isSelected()
 
     fun getColor(): String {
         val color: Color = colorPanel.selectedColor ?: Color.RED
@@ -48,9 +58,5 @@ object AppSettingsComponent {
     fun getVimOtherColor(): String {
         val color: Color = vimOtherColorPanel.selectedColor ?: Color.RED
         return String.format("#%02X%02X%02X", color.red, color.green, color.blue)
-    }
-
-    fun setIdeaUserStatus(newStatus: Boolean) {
-        myUserStatus.setSelected(newStatus)
     }
 }

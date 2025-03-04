@@ -9,7 +9,7 @@ class AppSettingsConfigurable : Configurable {
 
     override fun isModified(): Boolean {
         val state = AppSettings.getInstance().state
-        return AppSettingsComponent.getIdeaUserStatus() != state?.ideaStatus ||
+        return AppSettingsComponent.getVimCustomize() != state?.vimCustomize ||
             AppSettingsComponent.getColor() != state?.colorHex ||
             AppSettingsComponent.getVimInsertColor() != state?.vimInsertColorHex ||
             AppSettingsComponent.getVimOtherColor() != state?.vimOtherColorHex
@@ -18,12 +18,15 @@ class AppSettingsConfigurable : Configurable {
     override fun apply() {
         val state = AppSettings.getInstance().state
         val color = AppSettingsComponent.getColor()
+        val vimCustomize = AppSettingsComponent.getVimCustomize()
         val vimInsertcolor = AppSettingsComponent.getVimInsertColor()
         val vimOthercolor = AppSettingsComponent.getVimOtherColor()
         state?.colorHex = color
+        state?.vimCustomize = vimCustomize
         state?.vimInsertColorHex = vimInsertcolor
         state?.vimOtherColorHex = vimOthercolor
-        state?.ideaStatus = AppSettingsComponent.getIdeaUserStatus()
+
+        println("vimCustomize: $vimCustomize")
 
         val editors = EditorFactory.getInstance().allEditors
         ColorService.changeCursorColor(editors.toList())

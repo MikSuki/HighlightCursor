@@ -39,5 +39,5 @@ data class MyState(
     @NonNls
     var vimOtherColorHex: String = "#FF0000",
     @NonNls
-    var ideaStatus: Boolean = false,
+    var vimCustomize: Boolean = false,
 )

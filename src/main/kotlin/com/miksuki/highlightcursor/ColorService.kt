@@ -19,7 +19,7 @@ object ColorService {
         println("other color: ${state?.vimOtherColorHex}")
         val colorHex =
             when (true) {
-                VimUtil.isInVimEditor() ->
+                (state?.vimCustomize == true && VimUtil.isInVimEditor()) ->
                     if (VimUtil.isInsertMode()) {
                         state?.vimInsertColorHex
                     } else {
