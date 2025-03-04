@@ -33,8 +33,6 @@ class AppSettings : PersistentStateComponent<MyState> {
 
 data class MyState(
     @NonNls
-    var userId: String = "John Smith",
-    @NonNls
     var colorHex: String = "#FF0000",
     @NonNls
     var vimInsertColorHex: String = "#FF0000",

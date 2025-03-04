@@ -9,8 +9,7 @@ class AppSettingsConfigurable : Configurable {
 
     override fun isModified(): Boolean {
         val state = AppSettings.getInstance().state
-        return AppSettingsComponent.getUserNameText() != state?.userId ||
-            AppSettingsComponent.getIdeaUserStatus() != state?.ideaStatus ||
+        return AppSettingsComponent.getIdeaUserStatus() != state?.ideaStatus ||
             AppSettingsComponent.getColor() != state?.colorHex ||
             AppSettingsComponent.getVimInsertColor() != state?.vimInsertColorHex ||
             AppSettingsComponent.getVimOtherColor() != state?.vimOtherColorHex
@@ -21,7 +20,6 @@ class AppSettingsConfigurable : Configurable {
         val color = AppSettingsComponent.getColor()
         val vimInsertcolor = AppSettingsComponent.getVimInsertColor()
         val vimOthercolor = AppSettingsComponent.getVimOtherColor()
-        state?.userId = AppSettingsComponent.getUserNameText()
         state?.colorHex = color
         state?.vimInsertColorHex = vimInsertcolor
         state?.vimOtherColorHex = vimOthercolor

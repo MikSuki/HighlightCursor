@@ -3,14 +3,11 @@ package com.miksuki.highlightcursor
 import com.intellij.ui.ColorPanel
 import com.intellij.ui.components.JBCheckBox
 import com.intellij.ui.components.JBLabel
-import com.intellij.ui.components.JBTextField
 import com.intellij.util.ui.FormBuilder
 import java.awt.Color
-import javax.swing.JComponent
 import javax.swing.JPanel
 
 object AppSettingsComponent {
-    private val myUserText = JBTextField()
     private val myUserStatus = JBCheckBox()
     private var colorPanel =
         ColorPanel().apply {
@@ -29,21 +26,12 @@ object AppSettingsComponent {
     val myMainPanel: JPanel =
         FormBuilder
             .createFormBuilder()
-            .addLabeledComponent(JBLabel("User name: "), myUserText, 1, false)
             .addComponent(myUserStatus, 1)
             .addLabeledComponent(JBLabel("Choose color: "), colorPanel, 1, false)
             .addLabeledComponent(JBLabel("Choose vim insert color: "), vimInsertColorPanel, 1, false)
             .addLabeledComponent(JBLabel("Choose vim other color: "), vimOtherColorPanel, 1, false)
             .addComponentFillVertically(JPanel(), 0)
             .panel
-
-    fun getPreferredFocusedComponent(): JComponent = myUserText
-
-    fun getUserNameText(): String = myUserText.getText()
-
-    fun setUserNameText(newText: String) {
-        myUserText.setText(newText)
-    }
 
     fun getIdeaUserStatus(): Boolean = myUserStatus.isSelected()
 
