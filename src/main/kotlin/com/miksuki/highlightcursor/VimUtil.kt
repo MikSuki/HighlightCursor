@@ -7,7 +7,7 @@ import com.maddyhome.idea.vim.VimPlugin.getEditor
 import com.maddyhome.idea.vim.state.mode.Mode
 
 object VimUtil {
-    private var lastVimMode: Mode = Mode.NORMAL()
+    private var lastVimMode: Mode? = null
 
     fun isInVimEditor(): Boolean {
         val vimPluginId = PluginId.getId("IdeaVim")
