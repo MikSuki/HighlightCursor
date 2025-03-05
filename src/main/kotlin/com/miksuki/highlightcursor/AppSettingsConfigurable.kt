@@ -10,9 +10,9 @@ class AppSettingsConfigurable : Configurable {
     override fun isModified(): Boolean {
         val state = AppSettings.getInstance().state
         return AppSettingsComponent.getVimCustomize() != state?.vimCustomize ||
-            AppSettingsComponent.getColor() != state?.colorHex ||
-            AppSettingsComponent.getVimInsertColor() != state?.vimInsertColorHex ||
-            AppSettingsComponent.getVimOtherColor() != state?.vimOtherColorHex
+            AppSettingsComponent.getColor() != state.colorHex ||
+            AppSettingsComponent.getVimInsertColor() != state.vimInsertColorHex ||
+            AppSettingsComponent.getVimOtherColor() != state.vimOtherColorHex
     }
 
     override fun apply() {
