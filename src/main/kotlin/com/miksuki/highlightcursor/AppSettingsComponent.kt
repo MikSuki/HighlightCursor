@@ -33,14 +33,18 @@ object AppSettingsComponent {
             .addVerticalGap(15)
             .addSeparator(5)
             .addVerticalGap(15)
-            .addComponent(JBLabel("----- If vim is not installed, the following setting will not work -----"))
+            .addComponent(JBLabel("----- If vim is not installed, the following settings will not work -----"))
             .addVerticalGap(15)
             .addLabeledComponent(JBLabel("Enable vim customize settings"), vimCustomize, 1, false)
             .addVerticalGap(15)
-            .addLabeledComponent(JBLabel("Color for insert mode: "), vimInsertColorPanel, 1, false)
+            .addLabeledComponent(JBLabel("Choose the color for insert mode: "), vimInsertColorPanel, 1, false)
             .addVerticalGap(15)
-            .addLabeledComponent(JBLabel("Color for other mode(normal, view, ...): "), vimOtherColorPanel, 1, false)
-            .addComponentFillVertically(JPanel(), 0)
+            .addLabeledComponent(
+                JBLabel("Choose the color for other mode(normal, view, ...): "),
+                vimOtherColorPanel,
+                1,
+                false,
+            ).addComponentFillVertically(JPanel(), 0)
             .panel
 
     fun getVimCustomize(): Boolean = vimCustomize.isSelected()
