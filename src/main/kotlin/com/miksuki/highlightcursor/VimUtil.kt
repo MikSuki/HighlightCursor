@@ -14,8 +14,6 @@ object VimUtil {
         val isVimInstalled = PluginManager.isPluginInstalled(vimPluginId)
         val isVimEnabled = VimPlugin.isEnabled()
 
-        println("vim install ? $isVimInstalled")
-        println("vim enabled ? $isVimEnabled")
         return isVimEnabled
 //        return isVimInstalled && isVimEnabled
     }
@@ -29,10 +27,6 @@ object VimUtil {
             } catch (e: Exception) {
                 Mode.NORMAL()
             }
-        println("vim distinct mode length: ${getEditor().getEditors().map { it.mode }.distinct().size}")
-        println("current mode is: $currentMode")
-        println("current mode is insert?  ${currentMode is Mode.INSERT}")
-
         return currentMode
     }
 
@@ -47,9 +41,6 @@ object VimUtil {
         val isModeChange = lastVimMode != currentMode
         if (isModeChange) {
             lastVimMode = currentMode
-            println("mode change ~~~")
-            println("mode change ~~~")
-            println("mode change ~~~")
         }
 
         return isModeChange

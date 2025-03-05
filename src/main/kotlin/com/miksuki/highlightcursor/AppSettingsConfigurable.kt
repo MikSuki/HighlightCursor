@@ -26,8 +26,6 @@ class AppSettingsConfigurable : Configurable {
         state?.vimInsertColorHex = vimInsertcolor
         state?.vimOtherColorHex = vimOthercolor
 
-        println("vimCustomize: $vimCustomize")
-
         val editors = EditorFactory.getInstance().allEditors
         ColorService.changeCursorColor(editors.toList())
     }

@@ -15,8 +15,6 @@ object ColorService {
     private fun getSettingColor(): Color? {
         val state = AppSettings.getInstance().state
 
-        println("insert color: ${state?.vimInsertColorHex}")
-        println("other color: ${state?.vimOtherColorHex}")
         val colorHex =
             when (true) {
                 (state?.vimCustomize == true && VimUtil.isInVimEditor()) ->

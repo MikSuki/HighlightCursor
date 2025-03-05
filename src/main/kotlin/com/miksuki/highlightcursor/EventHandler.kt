@@ -9,7 +9,6 @@ class EventHandler : EventDispatcher {
     override fun dispatch(event: AWTEvent): Boolean {
         if (event is KeyEvent && VimUtil.isInVimEditor()) {
             if (VimUtil.checkVimModeChange()) {
-                println("vim mode change ~~~")
                 val editors = EditorFactory.getInstance().allEditors
                 ColorService.changeCursorColor(editors.toList())
             }
