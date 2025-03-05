@@ -30,7 +30,7 @@ This is an IntelliJ extension that allows you to change the cursor color.
 
 <!-- Plugin description end -->
 
-## Previews
+## Preview
 
 <img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-1.png?raw=true" alt="drawing"/>
 
