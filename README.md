@@ -32,8 +32,8 @@ This is an IntelliJ extension that allows you to change the cursor color.
 
 ## Previews
 
-<img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-1.png?raw=true" alt="drawing" width="500"/>
+<img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-1.png?raw=true" alt="drawing"/>
 
-<img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-2.png?raw=true" alt="drawing" width="500"/>
+<img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-2.png?raw=true" alt="drawing"/>
 
-<img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-3.png?raw=true" alt="drawing" width="500"/>
+<img src="https://github.com/MikSuki/HighlightCursor/blob/dev/img/fig-3.png?raw=true" alt="drawing"/>
