@@ -24,7 +24,7 @@ object ColorService {
                         state?.vimOtherColorHex
                     }
 
-                else -> state?.colorHex
+                else -> state?.norlmalColorHex
             }
         colorHex?.let {
             return Color.decode(it)

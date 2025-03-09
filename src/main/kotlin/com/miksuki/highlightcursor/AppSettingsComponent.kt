@@ -8,13 +8,15 @@ import java.awt.Color
 import javax.swing.JPanel
 
 object AppSettingsComponent {
+    private val DEFAULT_COLOR = Color.RED
+
     private val vimCustomize =
         JBCheckBox().apply {
             isSelected = AppSettings.getInstance().state?.vimCustomize ?: false
         }
     private var colorPanel =
         ColorPanel().apply {
-            selectedColor = Color.decode(AppSettings.getInstance().state?.colorHex)
+            selectedColor = Color.decode(AppSettings.getInstance().state?.norlmalColorHex)
         }
 
     private var vimInsertColorPanel =
@@ -49,18 +51,20 @@ object AppSettingsComponent {
 
     fun getVimCustomize(): Boolean = vimCustomize.isSelected()
 
-    fun getColor(): String {
-        val color: Color = colorPanel.selectedColor ?: Color.RED
-        return String.format("#%02X%02X%02X", color.red, color.green, color.blue)
+    private fun getColorHex(color: Color) = String.format("#%02X%02X%02X", color.red, color.green, color.blue)
+
+    fun getColorHex(): String {
+        val color: Color = colorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
     }
 
     fun getVimInsertColor(): String {
-        val color: Color = vimInsertColorPanel.selectedColor ?: Color.RED
-        return String.format("#%02X%02X%02X", color.red, color.green, color.blue)
+        val color: Color = vimInsertColorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
     }
 
     fun getVimOtherColor(): String {
-        val color: Color = vimOtherColorPanel.selectedColor ?: Color.RED
-        return String.format("#%02X%02X%02X", color.red, color.green, color.blue)
+        val color: Color = vimOtherColorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
     }
 }
