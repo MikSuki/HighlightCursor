@@ -1,7 +1,5 @@
 package com.miksuki.highlightcursor
 
-import com.intellij.ide.plugins.PluginManager
-import com.intellij.openapi.extensions.PluginId
 import com.maddyhome.idea.vim.VimPlugin
 import com.maddyhome.idea.vim.VimPlugin.getEditor
 import com.maddyhome.idea.vim.state.mode.Mode
@@ -9,14 +7,7 @@ import com.maddyhome.idea.vim.state.mode.Mode
 object VimUtil {
     private var lastVimMode: Mode? = null
 
-    fun isInVimEditor(): Boolean {
-        val vimPluginId = PluginId.getId("IdeaVim")
-        val isVimInstalled = PluginManager.isPluginInstalled(vimPluginId)
-        val isVimEnabled = VimPlugin.isEnabled()
-
-        return isVimEnabled
-//        return isVimInstalled && isVimEnabled
-    }
+    fun isInVimEditor(): Boolean = VimPlugin.isEnabled()
 
     fun getCurrentMode(): Mode {
         val currentMode =
