@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "com.miksuki"
-version = "1.0.0"
+version = "1.0.1"
 
 repositories {
     mavenCentral()
@@ -34,7 +34,7 @@ tasks {
 
     patchPluginXml {
         sinceBuild.set("242.1")
-        untilBuild.set("243.*")
+        untilBuild.set("")
 
         pluginDescription =
             providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
