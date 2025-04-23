@@ -6,6 +6,8 @@
 
 This is an IntelliJ extension that allows you to change the cursor color.
 
+[View this plugin on JetBrains Plugin Store](https://plugins.jetbrains.com/plugin/26743-highlightcursor)
+
 ## Usage
 
 ### Settings Location
