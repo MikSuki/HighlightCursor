@@ -10,21 +10,15 @@ object VimUtil {
     fun isInVimEditor(): Boolean = VimPlugin.isEnabled()
 
     fun getCurrentMode(): Mode {
-        val currentMode =
-            try {
-                getEditor()
-                    .getEditors()
-                    .map { it.mode }[0]
-            } catch (e: Exception) {
-                Mode.NORMAL()
-            }
-        return currentMode
+        return try {
+            getEditor()
+                .getEditors()
+                .map { it.mode }[0]
+        } catch (e: Exception) {
+            Mode.NORMAL()
+        }
     }
 
-    fun isInsertMode(): Boolean {
-        val currentMode = getCurrentMode()
-        return currentMode is Mode.INSERT
-    }
 
     fun checkVimModeChange(): Boolean {
         val currentMode = getCurrentMode()

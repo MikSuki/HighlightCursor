@@ -32,12 +32,20 @@ class AppSettings : PersistentStateComponent<MyState> {
 }
 
 data class MyState(
-    @NonNls
-    var norlmalColorHex: String = "#FF0000",
-    @NonNls
-    var vimInsertColorHex: String = "#FF0000",
-    @NonNls
-    var vimOtherColorHex: String = "#FF0000",
-    @NonNls
+    @param:NonNls
+    var normalColorHex: String = "#FF0000",
+    @param:NonNls
+    var vimInsertColorHex: String = "#FF8300",
+    @param:NonNls
+    var vimNormalColorHex: String = "#076600",
+    @param:NonNls
+    var vimVisualColorHex: String = "#38AAFF",
+    @param:NonNls
+    var vimReplaceColorHex: String = "#FF0000",
+    @param:NonNls
+    var vimSelectColorHex: String = "#F700FF",
+    @param:NonNls
+    var vimOtherColorHex: String = "#8500FF",
+    @param:NonNls
     var vimCustomize: Boolean = false,
 )
