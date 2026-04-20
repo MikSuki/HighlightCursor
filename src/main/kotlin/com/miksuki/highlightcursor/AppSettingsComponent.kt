@@ -16,12 +16,28 @@ object AppSettingsComponent {
         }
     private var colorPanel =
         ColorPanel().apply {
-            selectedColor = Color.decode(AppSettings.getInstance().state?.norlmalColorHex)
+            selectedColor = Color.decode(AppSettings.getInstance().state?.normalColorHex)
         }
 
     private var vimInsertColorPanel =
         ColorPanel().apply {
             selectedColor = Color.decode(AppSettings.getInstance().state?.vimInsertColorHex)
+        }
+    private var vimNormalColorPanel =
+        ColorPanel().apply {
+            selectedColor = Color.decode(AppSettings.getInstance().state?.vimNormalColorHex)
+        }
+    private var vimVisualColorPanel =
+        ColorPanel().apply {
+            selectedColor = Color.decode(AppSettings.getInstance().state?.vimVisualColorHex)
+        }
+    private var vimReplaceColorPanel =
+        ColorPanel().apply {
+            selectedColor = Color.decode(AppSettings.getInstance().state?.vimReplaceColorHex)
+        }
+    private var vimSelectColorPanel =
+        ColorPanel().apply {
+            selectedColor = Color.decode(AppSettings.getInstance().state?.vimSelectColorHex)
         }
     private var vimOtherColorPanel =
         ColorPanel().apply {
@@ -41,15 +57,23 @@ object AppSettingsComponent {
             .addVerticalGap(15)
             .addLabeledComponent(JBLabel("Choose the color for insert mode: "), vimInsertColorPanel, 1, false)
             .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Choose the color for normal mode: "), vimNormalColorPanel, 1, false)
+            .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Choose the color for visual mode: "), vimVisualColorPanel, 1, false)
+            .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Choose the color for replace mode: "), vimReplaceColorPanel, 1, false)
+            .addVerticalGap(15)
+            .addLabeledComponent(JBLabel("Choose the color for select mode: "), vimSelectColorPanel, 1, false)
+            .addVerticalGap(15)
             .addLabeledComponent(
-                JBLabel("Choose the color for other mode(normal, view, ...): "),
+                JBLabel("Choose the color for other modes: "),
                 vimOtherColorPanel,
                 1,
                 false,
             ).addComponentFillVertically(JPanel(), 0)
             .panel
 
-    fun getVimCustomize(): Boolean = vimCustomize.isSelected()
+    fun getVimCustomize(): Boolean = vimCustomize.isSelected
 
     private fun getColorHex(color: Color) = String.format("#%02X%02X%02X", color.red, color.green, color.blue)
 
@@ -60,6 +84,26 @@ object AppSettingsComponent {
 
     fun getVimInsertColor(): String {
         val color: Color = vimInsertColorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
+    }
+
+    fun getVimNormalColor(): String {
+        val color: Color = vimNormalColorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
+    }
+
+    fun getVimVisualColor(): String {
+        val color: Color = vimVisualColorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
+    }
+
+    fun getVimReplaceColor(): String {
+        val color: Color = vimReplaceColorPanel.selectedColor ?: DEFAULT_COLOR
+        return getColorHex(color)
+    }
+
+    fun getVimSelectColor(): String {
+        val color: Color = vimSelectColorPanel.selectedColor ?: DEFAULT_COLOR
         return getColorHex(color)
     }
 

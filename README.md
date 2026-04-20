@@ -18,8 +18,13 @@ This is an IntelliJ extension that allows you to change the cursor color.
 
 1. Choose your desired color to change the cursor color.
 2. If you want to change the cursor color in Vim, enable **"Enable Vim customize settings"** and select your preferred
-   colors.
-    - Currently, only the colors for **Insert Mode** and **Other Modes** can be customized.
+   colors. Currently, these modes are supported:
+    - Normal
+    - Insert
+    - Visual
+    - Replace
+    - Select
+    - Others
 
 ## Supported Platforms
 

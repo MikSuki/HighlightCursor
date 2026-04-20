@@ -1,40 +1,37 @@
 import org.jetbrains.changelog.markdownToHTML
 
 plugins {
-    id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.25"
-    id("org.jetbrains.intellij") version "1.17.4"
+    id("org.jetbrains.kotlin.jvm") version "2.2.0"
+    id("org.jetbrains.intellij.platform") version "2.14.0"
     id("org.jetbrains.changelog") version "2.2.0"
 }
 
 group = "com.miksuki"
-version = "1.0.1"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-intellij {
-    version.set("2024.3.3")
-    type.set("IC") // Target IDE Platform
-    plugins.set(listOf("IdeaVIM:2.19.0"))
+dependencies {
+    intellijPlatform {
+        intellijIdeaCommunity("2024.3.3")
+        bundledPlugin("com.intellij.modules.platform")
+        plugin("IdeaVIM", "2.19.0")
+    }
+}
+
+kotlin {
+    jvmToolchain(17)
 }
 
 tasks {
-    // Set the JVM compatibility versionsHighLightCursorPlugin.xml
-    withType<JavaCompile> {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
-    }
-    withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
-    }
-
     patchPluginXml {
-        sinceBuild.set("242.1")
-        untilBuild.set("")
+        sinceBuild.set("243")
+        untilBuild.set(provider { null })
 
         pluginDescription =
             providers.fileContents(layout.projectDirectory.file("README.md")).asText.map {
